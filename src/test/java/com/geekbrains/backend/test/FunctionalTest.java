@@ -31,7 +31,7 @@ public abstract class FunctionalTest {
 
     public File getFileResource(String name) {
         String dir = getClass().getSimpleName();
-        return new File(getClass().getResource(dir + "/" + name).getFile());
+        File file = new File(getClass().getResource(dir + "/" + name).getFile());
+        return file;
     }
-
 }
