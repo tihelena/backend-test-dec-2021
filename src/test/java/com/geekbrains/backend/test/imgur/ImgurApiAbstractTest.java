@@ -6,13 +6,25 @@ import com.geekbrains.backend.test.FunctionalTest;
 import io.restassured.RestAssured;
 import io.restassured.authentication.OAuth2Scheme;
 import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.internal.AuthenticationSpecificationImpl;
 import io.restassured.specification.AuthenticationSpecification;
 import io.restassured.specification.RequestSpecification;
+import io.restassured.specification.ResponseSpecification;
+import org.hamcrest.Matchers;
+
+import static org.hamcrest.Matchers.is;
 
 public class ImgurApiAbstractTest extends FunctionalTest {
 
     protected static RequestSpecification requestSpecification;
+
+    ResponseSpecification responseSpecification = new ResponseSpecBuilder()
+            .expectStatusCode(200)
+            .build();
+
+
 
     static {
         try {
@@ -28,5 +40,6 @@ public class ImgurApiAbstractTest extends FunctionalTest {
             e.printStackTrace();
         }
     }
+
 
 }
